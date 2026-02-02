@@ -28,8 +28,8 @@ class TestBooksCollector:
         #1)Добавление книги.Негативные проверки.
     @pytest.mark.parametrize(
         'invalid_name',
-        ['', 'Ревьюер,желаю тебе хорошего настроения,меньше работы,больше приятных и радостных моментов))))))'])     
-    def test_add_new_book_len_more_than_40(self,invalid_name):
+        ['', 'Ревьюер,желаю тебе хорошего настроения,меньше работы,больше приятных и радостных моментов))))))', 'HelloHelloHelloHelloHelloHelloHelloHelloH'])     
+    def test_add_new_book_negativ_test(self,invalid_name):
         book = BooksCollector()
         book.add_new_book(invalid_name)
         assert len(book.get_books_genre()) == 0

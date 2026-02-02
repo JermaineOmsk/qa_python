@@ -34,6 +34,14 @@ class TestBooksCollector:
         book.add_new_book(invalid_name)
         assert len(book.get_books_genre()) == 0
 
+        #1.1)Проверка граничного значения в 40 символов
+    def test_add_new_book_add_same_books(self):
+        name = 'HelloHelloHelloHelloHelloHelloHelloHello'
+        sameBooks = BooksCollector()
+        sameBooks.add_new_book(name)
+        sameBooks.add_new_book(name)
+        assert len(sameBooks.get_books_genre()) == 1
+
         #2)Проверка, что нельзя добавить 2 одинаковые книги
     def test_add_new_book_add_same_books(self):
         name = 'Опасные связи'
@@ -98,6 +106,13 @@ class TestBooksCollector:
         book.add_new_book(book_name)
         book.add_book_in_favorites(book_name)
         assert book_name in book.favorites
+
+
+        #8.1)Тест на добавление книги в избранное, если она не была довлена в списокколлекию книг        
+    def test_add_book_in_favorites_if_book_nit_in_list(self):
+        book = BooksCollector()
+        book.add_book_in_favorites('Зеленая миля')
+        assert 'Зеленая миля' not in book.favorites
 
 
         #9)Тест на удаление из избранного
